@@ -15,12 +15,17 @@ int server_handshake(int *address) {
 
 int client_handshake(int *address) {
 
-  int pid = getpid();
-  int pvt_pipe = mkfifo(pid, 0644);
+  
+  char pid_str[20];
+  sprintf(pid_str, "%d", getpid());
+
+  
+  printf("%s\n", pid_str);
+  int pvt_pipe = mkfifo(pid_str, 0644);
   
   return 0;
 }
 
 int main() {
- 
+  client_handshake(28034);
 }
